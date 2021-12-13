@@ -13,6 +13,12 @@
   <property name="windowTitle">
    <string>SinWave Generator</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow
+{
+	background-color: white;
+}</string>
+  </property>
   <property name="iconSize">
    <size>
     <width>32</width>
@@ -27,31 +33,25 @@
     <item row="0" column="0" rowspan="2">
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="2" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>PushButton</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>PushButton</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <layout class="QHBoxLayout" name="horizontalLayout"/>
       </item>
       <item row="0" column="0">
-       <widget class="QGraphicsView" name="sinView"/>
+       <widget class="SinView" name="sinView"/>
       </item>
       <item row="1" column="0">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QScrollBar" name="horizontalScrollBar">
+         <widget class="QScrollBar" name="frameScrollBar">
           <property name="maximum">
+           <number>0</number>
+          </property>
+          <property name="singleStep">
+           <number>1</number>
+          </property>
+          <property name="pageStep">
+           <number>1</number>
+          </property>
+          <property name="value">
            <number>0</number>
           </property>
           <property name="orientation">
@@ -79,7 +79,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Frequency: </string>
+           <string>Frequency:      </string>
           </property>
          </widget>
         </item>
@@ -95,6 +95,9 @@
            <number>1</number>
           </property>
           <property name="maximum">
+           <number>100</number>
+          </property>
+          <property name="value">
            <number>100</number>
           </property>
           <property name="displayIntegerBase">
@@ -115,7 +118,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Amplitude:  </string>
+           <string>Amplitude:      </string>
           </property>
          </widget>
         </item>
@@ -156,14 +159,14 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
-         <widget class="QPushButton" name="DefaultButton">
+         <widget class="QPushButton" name="defaultButton">
           <property name="text">
            <string>Default</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="AcceptButton">
+         <widget class="QPushButton" name="acceptButton">
           <property name="text">
            <string>Accept</string>
           </property>
@@ -298,7 +301,7 @@ QPushButton:checked:hover
      <x>0</x>
      <y>0</y>
      <width>663</width>
-     <height>20</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -314,7 +317,7 @@ QPushButton:checked:hover
     </property>
     <addaction name="separator"/>
     <addaction name="actionStart"/>
-    <addaction name="actionSto"/>
+    <addaction name="actionStop"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuGenerator"/>
@@ -335,12 +338,19 @@ QPushButton:checked:hover
     <string>Start</string>
    </property>
   </action>
-  <action name="actionSto">
+  <action name="actionStop">
    <property name="text">
     <string>Stop</string>
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SinView</class>
+   <extends>QGraphicsView</extends>
+   <header>sinview.hpp</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="icons.qrc"/>
  </resources>

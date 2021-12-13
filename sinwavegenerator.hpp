@@ -1,6 +1,8 @@
-#pragma once
+﻿#pragma once
 
 #include <iostream>
+#include <fstream>
+#include <memory>
 
 #include <QMainWindow>
 #include <QGraphicsScene>
@@ -8,6 +10,10 @@
 #include <QRubberBand>
 #include <QChart>
 #include <QtCharts/QChartView>
+#include <QTimer>
+#include <QFileDialog>
+
+#include "filemanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class SinWaveGenerator; }
@@ -23,22 +29,29 @@ public:
     SinWaveGenerator(QWidget *parent = nullptr);
     ~SinWaveGenerator();
 
-public slots:
+private slots:
 
+    void compute();
     void switchProccess(bool enable);
+    float genSinValue(int value);
+    void setDefaults();
+    void acceptValues();
+    void currSliderValue(int value);
 
-private:
-
-    double genSinValue(int value);
+    void saveData();
+    void loadData();
 
 private:
 
     Ui::SinWaveGenerator *ui;
 
-    float amplitude = 1;
-    float frequency = 1;
+    const int pointsCount = 600;
 
-    double lastSinValue = 0.0;
+    uint32_t minCurrValue = 0;
+    uint32_t currentValue = 0;
+    float amplitude = 100;
+    int  frequency = 100;
 
-    QGraphicsScene *graphScene;
+    std::unique_ptr<QTimer> computeTimer = std::make_unique<QTimer>();
+    std::unique_ptr<FileManager> fileManager = std::make_unique<FileManager>(this);
 };
