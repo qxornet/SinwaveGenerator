@@ -14,8 +14,8 @@ SinWaveGenerator::SinWaveGenerator(QWidget *parent) : QMainWindow(parent), ui(ne
     connect(ui->frameScrollBar, SIGNAL(valueChanged(int)), this, SLOT(currSliderValue(int)));
     connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(saveData()));
     connect(ui->actionLoad, SIGNAL(triggered()), this, SLOT(loadData()));
-    connect(ui->saveButton, SIGNAL(triggered()), this, SLOT(saveData()));
-    connect(ui->openButton, SIGNAL(triggered()), this, SLOT(loadData()));
+    connect(ui->saveButton, SIGNAL(pressed()), this, SLOT(saveData()));
+    connect(ui->openButton, SIGNAL(pressed()), this, SLOT(loadData()));
     connect(fileManager.get(), SIGNAL(clearVisibleData()), ui->sinView, SLOT(clearData()));
     connect(fileManager.get(), SIGNAL(sendData(float, float)), ui->sinView, SLOT(addData(float,float)));
 

@@ -13,10 +13,19 @@
   <property name="windowTitle">
    <string>SinWave Generator</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/icon.png</normaloff>:/icons/icon.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow
 {
 	background-color: white;
+}
+
+QMenuBar 
+{
+margin-bottom: 10x;
 }</string>
   </property>
   <property name="iconSize">
@@ -27,6 +36,15 @@
   </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonFollowStyle</enum>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
@@ -179,6 +197,24 @@
     <item row="1" column="1">
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="saveButton">
+          <property name="text">
+           <string>Save</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="openButton">
+          <property name="text">
+           <string>Open</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
        <spacer name="verticalSpacer_2">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -255,37 +291,6 @@ QPushButton:checked:hover
           </property>
           <property name="flat">
            <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <spacer name="verticalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QPushButton" name="saveButton">
-          <property name="text">
-           <string>Save</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="openButton">
-          <property name="text">
-           <string>Open</string>
           </property>
          </widget>
         </item>
