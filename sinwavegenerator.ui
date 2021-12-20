@@ -324,8 +324,15 @@ QPushButton:checked:hover
     <addaction name="actionStart"/>
     <addaction name="actionStop"/>
    </widget>
+   <widget class="QMenu" name="menuReference">
+    <property name="title">
+     <string>Reference</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuGenerator"/>
+   <addaction name="menuReference"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSave">
@@ -346,6 +353,11 @@ QPushButton:checked:hover
   <action name="actionStop">
    <property name="text">
     <string>Stop</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>

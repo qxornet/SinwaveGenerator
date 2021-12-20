@@ -18,6 +18,7 @@ SinWaveGenerator::SinWaveGenerator(QWidget *parent) : QMainWindow(parent), ui(ne
     connect(ui->openButton, SIGNAL(pressed()), this, SLOT(loadData()));
     connect(fileManager.get(), SIGNAL(clearVisibleData()), ui->sinView, SLOT(clearData()));
     connect(fileManager.get(), SIGNAL(sendData(float, float)), ui->sinView, SLOT(addData(float,float)));
+    connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAboutMessage()));
 
     connect(ui->actionStart, &QAction::triggered, this, [this]() {
         ui->switchButton->setChecked(true);
@@ -70,7 +71,7 @@ void SinWaveGenerator::switchProccess(bool enable)
 
 float SinWaveGenerator::genSinValue(int value)
 {
-    return amplitude * sin(2 * value * (M_PI/180) * (frequency * 0,01));
+    return amplitude * sin(2 * value * (M_PI/180) * (frequency * 0.01));
 }
 
 void SinWaveGenerator::setDefaults()
@@ -98,6 +99,11 @@ void SinWaveGenerator::currSliderValue(int value)
     }
 
     ui->sinView->setXRange(value, value + pointsCount);
+}
+
+void SinWaveGenerator::showAboutMessage()
+{
+    QMessageBox::about(this, "Sinwave Generator v1.0", "<p>Created by <b>Qxornet</b><br><b>Github</b>: <a href=https://github.com/qxornet>https://github.com/qxornet</a><br>Made with <b>Qt 6</b>.<p>");
 }
 
 // -------------------------------------------------------------
