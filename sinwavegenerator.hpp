@@ -5,13 +5,9 @@
 #include <memory>
 
 #include <QMainWindow>
-#include <QGraphicsScene>
-#include <QGraphicsItem>
-#include <QRubberBand>
-#include <QChart>
-#include <QtCharts/QChartView>
 #include <QTimer>
 #include <QFileDialog>
+#include <QMessageBox>
 
 #include "filemanager.h"
 
@@ -37,6 +33,7 @@ private slots:
     void setDefaults();
     void acceptValues();
     void currSliderValue(int value);
+    void showAboutMessage();
 
     void saveData();
     void loadData();
